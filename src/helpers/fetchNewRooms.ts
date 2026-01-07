@@ -104,10 +104,10 @@ const fetchNewRooms = async (bot: TelegramBot) => {
                 continue;
             }
 
-            if (!seenRooms.has(item.room.contract.toLowerCase())) {
-                seenRooms.add(item.room.contract.toLowerCase());
+            if (!seenRooms.has(item.room.id)) {
+                seenRooms.add(item.room.id);
 
-                console.log("Room seen", item.room.contract);
+                console.log("Room seen", item.room.id);
 
                 if (CHAT_IDS.length > 0) {
                     const message = `
@@ -117,7 +117,6 @@ const fetchNewRooms = async (bot: TelegramBot) => {
 � *Description:* ${item.metadata.description}
 👤 *Creator:* [${item.creator.twitter_username}](https://x.com/${item?.creator?.twitter_username}) | [BaseScan](https://basescan.org/address/${item?.creator?.address})
 💰 *Buy Price:* ${item.room.buyPrice}
-🆔 *Contract:* [\`${item.room.contract}\`](https://basescan.org/address/${item?.room?.contract})
 📅 *Created At:* ${new Date(item.room.createdAt).toLocaleString()}
                     `.trim();
 
@@ -133,7 +132,7 @@ const fetchNewRooms = async (bot: TelegramBot) => {
                     console.log("TELEGRAM_CHAT_ID is not defined, skipping notification.");
                 }
             } else {
-                console.log("Room already seen", item.room.contract);
+                console.log("Room already seen", item.room.id);
             }
         }
 
