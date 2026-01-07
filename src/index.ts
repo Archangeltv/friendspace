@@ -11,7 +11,7 @@ if (!TG_BOT_TOKEN) {
     throw new Error("TELEGRAM_TOKEN is not defined");
 }
 
-const bot = new TelegramBot(TG_BOT_TOKEN);
+const bot = new TelegramBot(TG_BOT_TOKEN, {polling: true});
 
 bot.on("message", (msg) => {
     const chatId = msg.chat.id;
