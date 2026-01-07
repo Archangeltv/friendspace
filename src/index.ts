@@ -24,6 +24,6 @@ console.log("Bot is running...");
 setInterval(() => {
     fetchNewUsers(bot);
     fetchNewRooms(bot);
-}, 10000);
+}, 4000);
 
 
