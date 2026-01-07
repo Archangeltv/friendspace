@@ -93,15 +93,19 @@ const fetchNewRooms = async (bot: TelegramBot) => {
             return;
         }
 
+        console.log("Room response");
+
         const { data }: { data: RoomData[] } = await response.json();
+
+        console.log("Room data");
 
         for (const item of data) {
             if (new Date(item.room.createdAt).getTime() < START_TIME) {
                 continue;
             }
 
-            if (!seenRooms.has(item.room.contract)) {
-                seenRooms.add(item.room.contract);
+            if (!seenRooms.has(item.room.contract.toLowerCase())) {
+                seenRooms.add(item.room.contract.toLowerCase());
 
                 console.log("Room seen", item.room.contract);
 
@@ -128,6 +132,8 @@ const fetchNewRooms = async (bot: TelegramBot) => {
                 } else {
                     console.log("TELEGRAM_CHAT_ID is not defined, skipping notification.");
                 }
+            } else {
+                console.log("Room already seen", item.room.contract);
             }
         }
 
