@@ -1,5 +1,5 @@
 import type TelegramBot from "node-telegram-bot-api";
-import { CHAT_IDS } from "../constants/ChatIds.js";
+import { CHAT_IDS } from "../constants/ChatIds.ts";
 import "dotenv/config";
 
 const BASE_URL = process.env.BASE_URL;

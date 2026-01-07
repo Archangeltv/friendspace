@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import TelegramBot from "node-telegram-bot-api";
-import fetchNewUsers from "./helpers/fetchNewUsers.js";
-import fetchNewRooms from "./helpers/fetchNewRooms.js";
+import fetchNewUsers from "./helpers/fetchNewUsers.ts";
+import fetchNewRooms from "./helpers/fetchNewRooms.ts";
 
 dotenv.config();
 
