@@ -54,13 +54,15 @@ const fetchNewUsers = async (bot: TelegramBot) => {
             if (!seenUsers.has(user.unique_hash)) {
                 seenUsers.add(user.unique_hash);
 
+                console.log("User seen", user.twitter_username);
+
               
                 if (CHAT_IDS.length > 0) {
                     const message = `
 🆕 *New User Detected!*
 
-👤 *Username:* [${user.twitter_username}](https://x.com/${user.twitter_username})
-💰 *Points:* ${user.points}
+👤 *Username:* [${user?.twitter_username}](https://x.com/${user?.twitter_username})
+💰 *Points:* ${user?.points}
 🆔 *Address:* [\`${user.address}\`](https://basescan.org/address/${user.address})
 📅 *Created At:* ${new Date(user.createdAt).toLocaleString()}
                     `.trim();
@@ -71,6 +73,8 @@ const fetchNewUsers = async (bot: TelegramBot) => {
                     );
 
                     await Promise.all(sendPromises);
+
+                    console.log("User sent");
                 } else {
                     console.log("TELEGRAM_CHAT_ID is not defined, skipping notification.");
                 }

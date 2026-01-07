@@ -103,15 +103,17 @@ const fetchNewRooms = async (bot: TelegramBot) => {
             if (!seenRooms.has(item.room.contract)) {
                 seenRooms.add(item.room.contract);
 
+                console.log("Room seen", item.room.contract);
+
                 if (CHAT_IDS.length > 0) {
                     const message = `
 � *New Room Created!*
 
 🏷 *Name:* ${item.metadata.name}
 � *Description:* ${item.metadata.description}
-👤 *Creator:* [${item.creator.twitter_username}](https://x.com/${item.creator.twitter_username}) | [BaseScan](https://basescan.org/address/${item.creator.address})
+👤 *Creator:* [${item.creator.twitter_username}](https://x.com/${item?.creator?.twitter_username}) | [BaseScan](https://basescan.org/address/${item?.creator?.address})
 💰 *Buy Price:* ${item.room.buyPrice}
-🆔 *Contract:* [\`${item.room.contract}\`](https://basescan.org/address/${item.room.contract})
+🆔 *Contract:* [\`${item.room.contract}\`](https://basescan.org/address/${item?.room?.contract})
 📅 *Created At:* ${new Date(item.room.createdAt).toLocaleString()}
                     `.trim();
 
@@ -121,6 +123,8 @@ const fetchNewRooms = async (bot: TelegramBot) => {
                     );
 
                     await Promise.all(sendPromises);
+
+                    console.log("Room sent");
                 } else {
                     console.log("TELEGRAM_CHAT_ID is not defined, skipping notification.");
                 }
