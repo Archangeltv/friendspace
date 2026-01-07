@@ -26,6 +26,7 @@ const seenUsers = new Set<string>();
 const START_TIME = Date.now();
 
 const fetchNewUsers = async (bot: TelegramBot) => {
+    console.log("User running");
     try {
         if (!BASE_URL) {
             console.log("BASE_URL is not defined");

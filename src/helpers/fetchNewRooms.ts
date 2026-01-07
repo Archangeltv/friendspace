@@ -68,6 +68,7 @@ const seenRooms = new Set<string>();
 const START_TIME = Date.now();
 
 const fetchNewRooms = async (bot: TelegramBot) => {
+    console.log("Room running")
     try {
         if (!BASE_URL) {
             console.log("BASE_URL is not defined");
