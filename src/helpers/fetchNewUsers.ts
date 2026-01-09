@@ -63,7 +63,8 @@ const fetchNewUsers = async (bot: TelegramBot) => {
 
 👤 *Username:* [${user?.twitter_username}](https://x.com/${user?.twitter_username})
 💰 *Points:* ${user?.points}
-🆔 *Address:* [\`${user.address}\`](https://basescan.org/address/${user.address})
+🆔 *Address:* \`${user.address}\`
+🔗 [Basescan](https://basescan.org/address/${user.address})
 📅 *Created At:* ${new Date(user.createdAt).toLocaleString()}
                     `.trim();
 

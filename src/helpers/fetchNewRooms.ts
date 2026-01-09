@@ -111,11 +111,13 @@ const fetchNewRooms = async (bot: TelegramBot) => {
 
                 if (CHAT_IDS.length > 0) {
                     const message = `
-� *New Room Created!*
+🌟 *New Room Created!*
 
 🏷 *Name:* ${item.metadata.name}
-� *Description:* ${item.metadata.description}
-👤 *Creator:* [${item.creator.twitter_username}](https://x.com/${item?.creator?.twitter_username}) | [BaseScan](https://basescan.org/address/${item?.creator?.address})
+📝 *Description:* ${item.metadata.description}
+👤 *Creator:* [${item.creator.twitter_username}](https://x.com/${item?.creator?.twitter_username})
+🆔 *Address:* \`${item.creator.address}\`
+🔗 [BaseScan](https://basescan.org/address/${item?.creator?.address})
 💰 *Buy Price:* ${item.room.buyPrice}
 📅 *Created At:* ${new Date(item.room.createdAt).toLocaleString()}
                     `.trim();
